@@ -11,6 +11,6 @@ class Transaction(SQLModel, table=True):
     counterparty_number: str | None = None
     balance_after: float | None = None
     fee: float | None = None
-    provider_reference_id: str | None = None
+    transaction_id: str | None = None
     raw_text: str
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=datetime.now)

@@ -34,7 +34,7 @@ def extract_shared_fields(text: str) -> dict:
 
     return {
         "balance_after": balance.group(1) if balance else None,
-        "reference_id": ref.group(1) if ref else None,
+        "transaction_id": ref.group(1) if ref else None,
         "fee": charged.group(1) if charged else None,
     }
 
@@ -50,7 +50,7 @@ def parse(text: str) -> dict:
         fields.update(
             {
                 "direction": "out",
-                "amount": m.group(1) if m else None,
+                "amount": m.group(1).replace(",", "") if m else None,
                 "counterparty_number": m.group(2) if m else None,
                 "counterparty_name": m.group(3).strip() if m else None,
             }
@@ -65,7 +65,7 @@ def parse(text: str) -> dict:
         fields.update(
             {
                 "direction": "in",
-                "amount": m.group(1) if m else None,
+                "amount": m.group(1).replace(",", "") if m else None,
                 "counterparty_name": m.group(2).strip() if m else None,
             }
         )
@@ -79,7 +79,7 @@ def parse(text: str) -> dict:
         fields.update(
             {
                 "direction": "out",
-                "amount": m.group(1) if m else None,
+                "amount": m.group(1).replace(",", "") if m else None,
                 "counterparty_name": m.group(2).strip() if m else None,
             }
         )
@@ -91,7 +91,7 @@ def parse(text: str) -> dict:
         fields.update(
             {
                 "direction": "out",
-                "amount": m.group(1) if m else None,
+                "amount": m.group(1).replace(",", "") if m else None,
                 "counterparty_name": "TELECEL BUNDLE",
             }
         )
@@ -105,7 +105,7 @@ def parse(text: str) -> dict:
         fields.update(
             {
                 "direction": "in",
-                "amount": m.group(1) if m else None,
+                "amount": m.group(1).replace(",", "") if m else None,
                 "counterparty_name": "TELECEL INTEREST",
             }
         )

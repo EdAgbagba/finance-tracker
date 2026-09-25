@@ -48,8 +48,8 @@ def parse(text: str) -> dict:
         fields.update(
             {
                 "direction": "in",
-                "amount": m.group(1) if m else None,
-                "counterparty": m.group(2).strip() if m else None,
+                "amount": m.group(1).replace(",", "") if m else None,
+                "counterparty_name": m.group(2).strip() if m else None,
             }
         )
 
@@ -61,8 +61,8 @@ def parse(text: str) -> dict:
         fields.update(
             {
                 "direction": "out",
-                "amount": m.group(1) if m else None,
-                "counterparty": m.group(2).strip() if m else None,
+                "amount": m.group(1).replace(",", "") if m else None,
+                "counterparty_name": m.group(2).strip() if m else None,
             }
         )
 
@@ -74,8 +74,8 @@ def parse(text: str) -> dict:
         fields.update(
             {
                 "direction": "out",
-                "amount": m.group(1) if m else None,
-                "counterparty": m.group(2).strip() if m else None,
+                "amount": m.group(1).replace(",", "") if m else None,
+                "counterparty_name": m.group(2).strip() if m else None,
             }
         )
 
@@ -84,8 +84,8 @@ def parse(text: str) -> dict:
         fields.update(
             {
                 "direction": "in",
-                "amount": m.group(1) if m else None,
-                "counterparty": None,
+                "amount": m.group(1).replace(",", "") if m else None,
+                "counterparty_name": None,
             }
         )
 
@@ -97,8 +97,8 @@ def parse(text: str) -> dict:
         fields.update(
             {
                 "direction": "out",
-                "amount": m.group(1) if m else None,
-                "counterparty": m.group(2).strip() if m else None,
+                "amount": m.group(1).replace(",", "") if m else None,
+                "counterparty_name": m.group(2).strip() if m else None,
             }
         )
 
@@ -110,13 +110,13 @@ def parse(text: str) -> dict:
         fields.update(
             {
                 "direction": "out",
-                "amount": m.group(1) if m else None,
-                "counterparty": m.group(2).strip() if m else None,
+                "amount": m.group(1).replace(",", "") if m else None,
+                "counterparty_name": m.group(2).strip() if m else None,
             }
         )
 
     else:
-        fields.update({"direction": None, "amount": None, "counterparty": None})
+        fields.update({"direction": None, "amount": None, "counterparty_name": None})
 
     fields["provider"] = "mtn_momo"
     fields["type"] = txn_type
