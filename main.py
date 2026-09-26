@@ -23,8 +23,13 @@ async def ingest(payload: dict):
         else:
             new_txn_data = insert_transaction(parsed_data)
             return {"data": new_txn_data}
-    except Exception as e:
-        print(f"Error: {e}")
+    except KeyError as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=f"Missing required field: {e}",
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Unexpected error: {e}",
         )
