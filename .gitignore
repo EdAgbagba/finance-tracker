@@ -4,3 +4,6 @@ kasuku.db
 __pycache__/.env
 struct.md
 kasuku.db
+.vscode/
+.parsers/__pycache__/
+__pycache__/
