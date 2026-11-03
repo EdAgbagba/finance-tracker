@@ -7,3 +7,4 @@ kasuku.db
 .vscode/
 .parsers/__pycache__/
 __pycache__/
+.env

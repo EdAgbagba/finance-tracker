@@ -1,2 +1,6 @@
-fastapi
 uvicorn[standard]
+psycopg2
+fastapi[all]
+sqlmodel
+pwdlib[argon2]
+pyjwt
